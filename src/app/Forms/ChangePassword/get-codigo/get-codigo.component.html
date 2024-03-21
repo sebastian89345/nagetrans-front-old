@@ -1,0 +1,92 @@
+<style>
+    *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    body{
+        background: rgb(219, 226, 226);
+    } 
+    .rowpropio{
+        background: white;
+        border-radius: 30px;
+        box-shadow: 12px 12px 22px grey;
+    }
+    img{
+        border-top-left-radius: 30px;
+        border-bottom-left-radius: 30px;
+    }
+    .btn1{
+        border: none;
+        outline: none;
+        height: 50px;
+        width: 100%;
+        background-color: red;
+        color: white;
+        border-radius: 4px;
+        font-weight: bold;
+    }
+    .btn1:hover{
+        background: white;
+        border: 1px solid;
+        color:black;
+    }.btnGuardar{
+        height: 40px;
+        width: 35%;
+    }
+    .btnActualizar{
+        height: 40px;
+        width: 35%;
+    }.btnLista{
+        height: 40px;
+        width: 35%;
+    }
+</style>
+
+<div *ngIf="CloseForm">
+
+
+<section class="Form my-4 mx-5">
+<div class="container">
+    <div class="row rowpropio no-gutters">
+
+         
+        <div class="col-lg-2 px-5 pt-5">
+
+            
+
+        </div>
+
+        <div class="col-lg-8 px-5 pt-5">
+
+            <h1 class="font-weight-bold py-3">verificar codigo</h1>
+
+            <h2 class="font-weight-bold py-3">Paso 1 >> Paso 2 >></h2>
+
+            <form [formGroup]="service.formModelVerificarCodigo" autocomplete="off" (submit)="onSubmit()">
+
+                
+                <div class="form-group">
+                    <div class="col-lg-11">
+                        <input type="text" formControlName="Codigo" placeholder="Codigo" class="form-control my-3 p-2">
+                        <label class="text-danger" *ngIf="service.formModelVerificarCodigo.get('Codigo').touched && service.formModelVerificarCodigo.get('Codigo').errors?.required">copie todo</label>
+                    </div>
+                </div>
+
+             <div class="form-row">
+                <div class="col-lg-11">
+                    <p>
+                        <button id="btnGuardar" [disabled]="!service.formModelVerificarCodigo.valid" type="submit" class="btnGuardar btn btn-outline-danger mt-3 mb-5">Enviar</button>
+                    </p>
+                </div>
+            </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+</section>
+
+</div>
+
+<app-update-password [sendcodigo]="sendcodigo" *ngIf="ActiveVerificarCodigo"></app-update-password>
